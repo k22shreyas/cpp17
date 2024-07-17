@@ -106,4 +106,49 @@ int main(){
     str1 = {1,2,3,4,5};
     //Since array is a fixed size, modification is very limited, only possible with its index in bound/range.
 
+    std::cout<<"modifiers"<<std::endl;
+    str1.erase(str1.begin()+2);
+    for(const auto& ele:str1){
+        std::cout<<ele<<std::endl;
+    }
+
+    str1.insert(str1.begin()+2, 777);
+    for(const auto& ele:str1){
+        std::cout<<ele<<std::endl;
+    }
+
+    str1.clear();
+
+    //Algo
+    str1 = {4,5,1,3,2};
+
+    //std::sort();
+    std::cout<<"std::sort"<<std::endl;
+    std::sort(str1.begin(), str1.end());
+    for(const auto& ele:str1){
+        std::cout<<ele<<std::endl;
+    }
+
+    //std::find();
+    std::vector<int>::iterator itr = std::find(str1.begin(), str1.end(), 7);
+    if(itr != str1.end()){
+       std::cout<<"Found"<<std::endl; 
+    }else{
+        std::cout<<"Not found"<<std::endl;
+    }
+
+    //std::for_each();
+    std::for_each(str1.begin(), str1.end(), [] (int& x) {return x*=2;});
+    for(const auto& ele:str1){
+        std::cout<<ele<<std::endl;
+    }
+
+    //std::copy();
+    std::vector<int> copy_vector(str1.size());
+
+    std::cout<<"std::copy"<<std::endl;
+    std::copy(str1.begin(), str1.end(), copy_vector.begin());
+    for(const auto& ele:copy_vector){
+        std::cout<<ele<<std::endl;
+    }
 }
